@@ -3,10 +3,12 @@
 #include <set>
 #include <string>
 #include <vector>
+#include <iostream>
 
 #include "process.h"
 #include "processor.h"
 #include "system.h"
+#include "linux_parser.h"
 
 using std::set;
 using std::size_t;
@@ -32,7 +34,13 @@ std::string System::OperatingSystem() { return string(); }
 int System::RunningProcesses() { return 0; }
 
 // TODO: Return the total number of processes on the system
-int System::TotalProcesses() { return 0; }
+int System::TotalProcesses() {
+    int totalProcesses = LinuxParser::TotalProcesses();
+    return totalProcesses;
+}
 
 // TODO: Return the number of seconds since the system started running
-long int System::UpTime() { return 0; }
+long int System::UpTime() {
+    long int uptime = LinuxParser::UpTime();
+    return uptime; 
+}
