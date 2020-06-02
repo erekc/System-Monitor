@@ -23,9 +23,7 @@ float Process::CpuUtilization() {
     std::vector<std::string> utils = LinuxParser::ProcessCpuUtilization(this->pid);
     std::string::size_type sz;
     float totalTime = std::stol(utils[LinuxParser::ProcStat::kUtime_], &sz) + 
-                    std::stol(utils[LinuxParser::ProcStat::kStime_], &sz) +
-                    std::stol(utils[LinuxParser::ProcStat::kCUtime_], &sz) +
-                    std::stol(utils[LinuxParser::ProcStat::kCStime_], &sz);
+                    std::stol(utils[LinuxParser::ProcStat::kStime_], &sz);
     float seconds = LinuxParser::UpTime() - (this->UpTime() / sysconf(_SC_CLK_TCK));
     // float utilization = 100 * ((totalTime / sysconf(_SC_CLK_TCK)) / seconds);
     float utilization = (totalTime / sysconf(_SC_CLK_TCK)) / seconds;

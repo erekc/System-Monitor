@@ -292,8 +292,8 @@ string LinuxParser::User(int pid) {
 long LinuxParser::UpTime(int pid) {
   long uptime;
   std::vector<std::string> utils = ProcessCpuUtilization(pid);
-  std::string uptimeString = utils.back();
-  std::istringstream convert(uptimeString);
-  convert >> uptime;
+  std::string uptimeString = utils[ProcStat::kStarttime_];
+  std::string::size_type sz;
+  uptime = std::stol(uptimeString, &sz);
   return uptime;
 }
