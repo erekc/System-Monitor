@@ -8,6 +8,6 @@ float Processor::Utilization() {
     long totalJiffies = LinuxParser::Jiffies();
     long activeJiffies = LinuxParser::ActiveJiffies();
     long idleJiffies = LinuxParser::IdleJiffies();
-    float cpuUtilization = (activeJiffies - idleJiffies) / (float) totalJiffies;
+    float cpuUtilization = (activeJiffies - idleJiffies) / (float) (totalJiffies);
     return cpuUtilization;
 }

@@ -4,6 +4,7 @@
 #include <string>
 #include <vector>
 #include <iostream>
+#include <algorithm>
 
 #include "process.h"
 #include "processor.h"
@@ -19,7 +20,15 @@ using std::vector;
 Processor& System::Cpu() { return cpu_; }
 
 // TODO: Return a container composed of the system's processes
-vector<Process>& System::Processes() { return processes_; }
+vector<Process>& System::Processes() {
+    std::vector<int> pids = LinuxParser::Pids();
+    for (int pid : pids){
+        this->processes_.push_back(Process(pid));
+    }
+    std::sort(this->processes_.begin(), this->processes_.end());
+    std::reverse(this->processes_.begin(), this->processes_.end());
+    return this->processes_; 
+}
 
 // TODO: Return the system's kernel identifier (string)
 std::string System::Kernel() {
