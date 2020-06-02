@@ -14,6 +14,7 @@ using std::vector;
 Process::Process(int pid){
     this->pid = pid;
     this->utilization = this->CpuUtilization();
+    this->ram = this->Ram();
 }
 // TODO: Return this process's ID
 int Process::Pid() { return this->pid; }
@@ -45,7 +46,7 @@ long int Process::UpTime() { return LinuxParser::UpTime(this->pid); }
 // TODO: Overload the "less than" comparison operator for Process objects
 // REMOVE: [[maybe_unused]] once you define the function
 bool Process::operator<(Process const& a){
-    //std::string::size_type sz;
-    //return std::stod(this->ram, &sz) < std::stod(a.ram, &sz) ? true : false;
-    return this->utilization < a.utilization ? true : false;
+    std::string::size_type sz;
+    return std::stod(this->ram, &sz) < std::stod(a.ram, &sz);
+    // return this->utilization < a.utilization;
 }

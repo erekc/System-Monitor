@@ -21,7 +21,7 @@ class Process {
 private:
  int pid;
  float utilization;
- //std::string ram;
+ std::string ram;
 };
 
 #endif
