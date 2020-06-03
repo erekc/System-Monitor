@@ -20,6 +20,22 @@ const std::string kVersionFilename{"/version"};
 const std::string kOSPath{"/etc/os-release"};
 const std::string kPasswordPath{"/etc/passwd"};
 
+const std::string filterProcesses{"processes"};
+const std::string filterRunningProcesses{"procs_running"};
+const std::string filterMemTotalString{"MemTotal:"};
+const std::string filterMemFreeString{"MemFree:"};
+const std::string filterBuffers{"Buffers:"};
+const std::string filterCached{"Cached:"};
+const std::string filterSlab{"Slab:"};
+const std::string filterCpu{"cpu"};
+const std::string filterUID{"Uid:"};
+const std::string filterProcMem{"VmData:"};
+
+template <typename T>
+T findValueByKey(const std::string &keyFilter, std::string &filename);
+template <typename T>
+T findValueOfFile(std::string &filename);
+
 // System
 float MemoryUtilization();
 long UpTime();

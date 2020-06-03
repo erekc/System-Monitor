@@ -21,7 +21,7 @@ Processor& System::Cpu() { return cpu_; }
 vector<Process>& System::Processes() {
     std::vector<int> pids = LinuxParser::Pids();
     for (int i = 0; i < (int) pids.size(); i++){
-        this->processes_.push_back(Process(pids[i]));
+        this->processes_.emplace_back(Process(pids[i]));
     }
     //std::sort(this->processes_.begin(), this->processes_.end());
     std::reverse(this->processes_.begin(), this->processes_.end());
